@@ -128,10 +128,10 @@ def get_advice(user_input: str) -> str:
     고전 작품에서 나타난 문제상황, 해결 과정, 교훈, 고전 작품과 사용자의 상황을 고려한 현대적 조언을
     완결된 하나의 글로 구체적으로 제시한 뒤
     작품 속 주인공이 사용자에게 해줄 만한 1줄 조언을 제시해주세요.
-    한 줄 조언은 주인공이름: 조언 내용 형식으로 답변해주세요.
+    한 줄 조언은 "주인공이름: 조언 내용" 형식으로 답변해주세요.
     연애 관련 고민이 아니면 "연애 관련 고민을 입력해 주세요."라고 답변하세요.
-    데이터: {json.dumps(classic_love_db, ensure_ascii=False)}
-    사용자 고민: {user_input}
+    "데이터": {json.dumps(classic_love_db, ensure_ascii=False)}
+    "사용자 고민": {user_input}
     """
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
