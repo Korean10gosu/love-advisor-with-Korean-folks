@@ -11,19 +11,20 @@ import streamlit as st
 st.markdown(
     """
     <style>
-    /* 전체 배경을 한지 질감 이미지로 설정 */
-    .stApp {
+    /* 전체 배경 */
+    .css-18e3th9 {  /* Streamlit 전체 컨테이너 클래스 */
         background-image: url("https://images.unsplash.com/photo-1601611025129-1b8bb6b3b1aa");
         background-size: cover;
         background-attachment: fixed;
+        background-repeat: no-repeat;
     }
 
-    /* 앱 제목 글꼴 변경 */
-    .app-title {
-        font-family: 'Nanum Myeongjo', serif; /* 한글 고전 느낌 글꼴 */
-        font-size: 48px;
-        font-weight: bold;
-        color: #4B3B2A; /* 진한 갈색 느낌 */
+    /* 앱 제목 */
+    h1 {
+        font-family: 'Nanum Myeongjo', serif !important;
+        font-size: 48px !important;
+        font-weight: bold !important;
+        color: #4B3B2A !important;
         text-align: center;
         margin-bottom: 30px;
     }
@@ -35,8 +36,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# 앱 제목
-st.markdown('<h1 class="app-title">고전문학과 함께하는 연애 상담 프로그램</h1>', unsafe_allow_html=True)
+# 제목
+st.markdown('<h1>고전문학과 함께하는 연애 상담 프로그램</h1>', unsafe_allow_html=True)
+
 
 
 # Streamlit Secrets에서 읽기
