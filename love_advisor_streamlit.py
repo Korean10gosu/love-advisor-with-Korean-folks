@@ -12,12 +12,14 @@ st.markdown(
     """
     <style>
     /* 전체 배경 */
-    .css-18e3th9 {
-        background-image: url("https://images.unsplash.com/photo-1601611025129-1b8bb6b3b1aa");
+    .stApp {
+        background: url("https://images.unsplash.com/photo-1601611025129-1b8bb6b3b1aa") no-repeat center center fixed;
         background-size: cover;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        min-height: 100vh;  /* 화면 전체 높이 확보 */
+    }
+
+    /* 내부 컨테이너도 투명하게 만들어 배경이 보이도록 */
+    .css-18e3th9, .block-container {
+        background-color: rgba(255, 255, 255, 0.85); /* 약간 반투명 */
     }
 
     /* 앱 제목 */
@@ -31,14 +33,14 @@ st.markdown(
     }
     </style>
 
-    <!-- Google Fonts 불러오기 -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
     """,
     unsafe_allow_html=True
 )
 
-# 제목
 st.markdown('<h1>고전문학과 함께하는 연애 상담 프로그램</h1>', unsafe_allow_html=True)
+
 
 
 
