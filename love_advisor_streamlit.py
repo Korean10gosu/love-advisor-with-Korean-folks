@@ -36,7 +36,7 @@ st.markdown(
 )
 
 # 앱 제목
-st.markdown('<h1 class="app-title">한국 고전문학 연애 상담 프로그램</h1>', unsafe_allow_html=True)
+st.markdown('<h1 class="app-title">고전문학과 함께하는 연애 상담 프로그램</h1>', unsafe_allow_html=True)
 
 
 # Streamlit Secrets에서 읽기
@@ -194,7 +194,7 @@ def get_advice(user_input: str) -> str:
 # Streamlit UI
 # -----------------------
 st.set_page_config(page_title="💌 한국 고전문학 연애 상담", page_icon="💌")
-st.title("💌 한국 고전문학 연애 상담 프로그램")
+
 
 user_input = st.text_input("연애 고민을 입력하세요...")
 
