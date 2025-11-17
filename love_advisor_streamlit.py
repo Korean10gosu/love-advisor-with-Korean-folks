@@ -1,16 +1,13 @@
 # love_advisor_streamlit.py
 
+# 수정 후 (Streamlit Secrets 사용)
 import os
-import json
-import streamlit as st
-from dotenv import load_dotenv
 import openai
+import streamlit as st
 
-# -----------------------
-# OpenAI API 설정
-# -----------------------
-load_dotenv()  # .env 파일 읽기
-client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Streamlit Secrets에서 읽기
+client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+
 # -----------------------
 # 고전 작품 데이터 (app.py 기준 전체 포함)
 # -----------------------
