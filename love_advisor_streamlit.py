@@ -121,18 +121,32 @@ classic_love_db = {
 # -----------------------
 # 상담 함수
 # -----------------------
+import json
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+import openai
+
+client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
 def get_advice(user_input: str) -> str:
+    # classic_love_db를 문자열로 미리 변환
+    data_str = json.dumps(classic_love_db, ensure_ascii=False)
+
     system_prompt = f"""
-    당신은 한국 고전문학 기반 연애 상담 전문가입니다.답변은 데이터 외 정보를 포함하면 안됩니다. 작품 정보에는 작가가 없으면, 작가를 만들어내지 말고 생략하세요.
-    사용자가 입력한 연애 고민을 바탕으로, 관련 고전 작품을 추천하고
-    고전 작품에서 나타난 문제상황, 해결 과정, 교훈, 고전 작품과 사용자의 상황을 고려한 현대적 조언을
-    완결된 하나의 글로 구체적으로 제시한 뒤
-    작품 속 주인공이 사용자에게 해줄 만한 1줄 조언을 제시해주세요.
-    한 줄 조언은 "주인공이름: 조언 내용" 형식으로 답변해주세요.
-    연애 관련 고민이 아니면 "연애 관련 고민을 입력해 주세요."라고 답변하세요.
-    "데이터": {json.dumps(classic_love_db, ensure_ascii=False)}
-    "사용자 고민": {user_input}
-    """
+당신은 한국 고전문학 기반 연애 상담 전문가입니다. 답변은 데이터 외 정보를 포함하면 안됩니다.
+작품 정보에는 작가가 없으면, 작가를 만들어내지 말고 생략하세요.
+사용자가 입력한 연애 고민을 바탕으로, 관련 고전 작품을 추천하고
+고전 작품에서 나타난 문제상황, 해결 과정, 교훈, 고전 작품과 사용자의 상황을 고려한 현대적 조언을
+완결된 하나의 글로 구체적으로 제시한 뒤
+작품 속 주인공이 사용자에게 해줄 만한 1줄 조언을 제시해주세요.
+한 줄 조언은 "주인공이름: 조언 내용" 형식으로 답변해주세요.
+연애 관련 고민이 아니면 "연애 관련 고민을 입력해 주세요."라고 답변하세요.
+
+"데이터": {data_str}
+"사용자 고민": {user_input}
+"""
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[{"role": "system", "content": system_prompt}],
@@ -140,6 +154,7 @@ def get_advice(user_input: str) -> str:
         max_tokens=800
     )
     return response.choices[0].message.content
+
 
 # -----------------------
 # Streamlit UI
