@@ -12,11 +12,12 @@ st.markdown(
     """
     <style>
     /* 전체 배경 */
-    .css-18e3th9 {  /* Streamlit 전체 컨테이너 클래스 */
+    .css-18e3th9 {
         background-image: url("https://images.unsplash.com/photo-1601611025129-1b8bb6b3b1aa");
         background-size: cover;
         background-attachment: fixed;
         background-repeat: no-repeat;
+        min-height: 100vh;  /* 화면 전체 높이 확보 */
     }
 
     /* 앱 제목 */
