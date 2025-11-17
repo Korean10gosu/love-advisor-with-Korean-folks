@@ -5,6 +5,40 @@ import os
 import openai
 import streamlit as st
 
+# -----------------------
+# 한글 고전 글꼴 + 한지 배경 적용
+# -----------------------
+st.markdown(
+    """
+    <style>
+    /* 전체 배경을 한지 질감 이미지로 설정 */
+    .stApp {
+        background-image: url("https://images.unsplash.com/photo-1601611025129-1b8bb6b3b1aa");
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    /* 앱 제목 글꼴 변경 */
+    .app-title {
+        font-family: 'Nanum Myeongjo', serif; /* 한글 고전 느낌 글꼴 */
+        font-size: 48px;
+        font-weight: bold;
+        color: #4B3B2A; /* 진한 갈색 느낌 */
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    </style>
+
+    <!-- Google Fonts 불러오기 -->
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    """,
+    unsafe_allow_html=True
+)
+
+# 앱 제목
+st.markdown('<h1 class="app-title">한국 고전문학 연애 상담 프로그램</h1>', unsafe_allow_html=True)
+
+
 # Streamlit Secrets에서 읽기
 client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
