@@ -39,14 +39,9 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown(
-    """
-    <div style='text-align: center; margin-bottom: 20px;'>
-        <img src='title.png' style='width:75%;'/>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+# HTML 대신 Streamlit 이미지 위젯 사용
+st.image("title.png", use_column_width=True)
+
 
 
 
